@@ -2,13 +2,21 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-def readable(plot):
+def readable(plot, title: bool = False):
     '''
     Aplica configurações para facilitar a legibilidade de um gráfico.
+    Argumentos:
+    plot -> Função que cria o gráfico
+    title -> Se a função requisitará input com o título
     '''
     plt.figure(figsize=(16,8))
     plot()
-    plt.title(input("Title: "))
+    if title is True:
+        title_str = input('Plot Title: ')
+        if len(title_str) != 0:
+            plt.title(title_str)
+        else:
+            pass
     plt.show()
 
 def col_values(df: pd.DataFrame, max_unique: int = 20):
